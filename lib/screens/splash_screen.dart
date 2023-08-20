@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vacations_app/login_screen.dart';
-
+import 'login_screen.dart';
+import 'package:vacations_app/constants.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -38,10 +38,11 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Color(0xFF013168), Color(0xFF024594)],
+                colors: [
+                  Color(0xFF013168),
+                  Color(0xFF024594)],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter)),
         child:Stack(
@@ -63,18 +64,7 @@ class _SplashScreenState extends State<SplashScreen>
         Positioned(
           left: 97,
           bottom: 28,
-          child: Text(
-            'Copyright - Ejada Systems Ltd. 1444 AH - 2023\n Version 1.0.0',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color(0xFFFAFAFA),
-              fontSize: 12,
-              fontFamily: 'Bahij TheSansArabic',
-              fontWeight: FontWeight.w500,
-              height: 1.08,
-              letterSpacing: 0.07,
-            ),
-        ),
+          child: kCopyRightStyle,
         ),
           ],
         )
