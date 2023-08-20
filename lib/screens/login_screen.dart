@@ -100,18 +100,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       MainButtonStyle(
                         text: 'Log In',
                       ),
-                      SizedBox(height: 15),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                      SizedBox(height: 25),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Expanded(
                           child: Container(
-                            margin: EdgeInsets.all(9),
                             decoration: kLineStyle,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       WelcomeText(
                           text: 'Log in with Your Face ID', fontSize: 18),
