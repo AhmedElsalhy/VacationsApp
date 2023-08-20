@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import '../widgets/welcome_text.dart';
-import 'package:vacations_app/widgets/text_field.dart';
-import 'package:vacations_app/widgets/main_button.dart';
 import 'package:vacations_app/constants.dart';
+import 'package:vacations_app/widgets/main_button.dart';
+import 'package:vacations_app/widgets/text_field.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
   @override
@@ -11,20 +10,17 @@ class LoginScreen extends StatefulWidget {
 }
 class _LoginScreenState extends State<LoginScreen> {
   bool _isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xFF013168),
-              ),
-          ),
-          Positioned(
-            left: 102,
-            top: 98,
+      backgroundColor: Color(0xFF013168),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+
+        children: <Widget>[
+          SizedBox(height: 98,),
+          Center(
             child: Container(
               width: 226,
               height: 74,
@@ -36,12 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          Positioned(
-            left: 0,
-            top: 218,
+          SizedBox(height: 46,),
+          Expanded(
             child: Container(
-              width:410.0,
-              height: 714.0,
               decoration: ShapeDecoration(
                 color: Color(0xFF3A6496),
                 shape: RoundedRectangleBorder(
@@ -51,127 +44,90 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-            ),
-          ),
-            Positioned(
-              left: 143,
-              top: 286,
-              child: WelcomeText(text: 'Welcome !',fontSize: 32,),
-            ),
-            Positioned(
-              top: 337,
-              left: 52,
-              right: 52,
-              child:WelcomeText(text: 'Log in to the Employees’ Vacations System',
-                fontSize: 17,
-              )
-            ),
-            Positioned(
-              left: 97,
-              bottom: 28,
-              child: kCopyRightStyle,
-            ),
-            Positioned(
-              left: 16.0,
-              top: 400.50,
-              child:Container(
-                width: 380,
-                height: 76,
-                child: TextFieldStyle(
-                  text: 'Username',
-                  obscureText: false,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 475.5,
-              left: 16,
-              child:Container(
-                width: 380,
-                height: 76,
-                child: TextFieldStyle(
-                  text: 'Password',
-                  obscureText: true,
-                ),
-              ),
-            ),
-          Positioned(
-            left: 3,
-            top: 520,
-           child: Row(
-             children: [
-               Checkbox(
+              child: Stack(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 50),
+                        Center(
+                          child: WelcomeText(text: 'Welcome !',fontSize: 32,),
 
-                 side: BorderSide( width:2,color: Colors.white),
-                 shape:RoundedRectangleBorder(
-                   borderRadius: BorderRadius.circular(4)
-                 ) ,
-                 value: _isChecked,
-                 onChanged: (newValue){
-                   setState(() {
-                     _isChecked = newValue!;
-                   });
-                 },
-               ),
-               Text(
-                 'Remember Me',
-                 style: kTextFieldStyle,
-               ),
-             ],
-           ),
-          ),
-          Positioned(
-            left: 16,
-            top: 600,
-            child:MainButtonStyle(text: 'Log In',),
-          ),
-          Positioned(
-            left: 16,
-            top: 690,
-            child: Container(
-              width: 180,
-              decoration:kLineStyle,
-            ),
-          ),
-          Positioned(
-            left: 197,
-            top: 678,
-            child: CircleAvatar(
-              backgroundColor: Color(0xFF6A8FBD),
-              radius: 13,
-              child: Text('OR',
-                style:kTextFieldStyle,
+                        ),
+                        WelcomeText(text: 'Log in to the Employees’ Vacations System',
+                          fontSize: 17,
+                        ),
+                        SizedBox(height: 30),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: TextFieldStyle(
+                              text: 'Username',
+                              obscureText: false),
+                        ),
+                        SizedBox(height: 30),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: TextFieldStyle(
+                            text: 'Password',
+                            obscureText: true,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Checkbox(
+
+                              side: BorderSide( width:2,color: Colors.white),
+                              shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4)
+                              ) ,
+                              value: _isChecked,
+                              onChanged: (newValue){
+                                setState(() {
+                                  _isChecked = newValue!;
+                                });
+                              },
+                            ),
+                            Text(
+                              'Remember Me',
+                              style: kTextFieldStyle,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height:30),
+                        MainButtonStyle(text: 'Log In',),
+                        SizedBox(height:15),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Container(
+                              margin: EdgeInsets.all(9),
+                              decoration: kLineStyle,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        WelcomeText(text: 'Log in with Your Face ID', fontSize: 18),
+                        SizedBox(height: 8,),
+                        Image(
+                          image: AssetImage('images/faceid.png'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 28),
+                          child: kCopyRightStyle,
+                        ),
+
+
+
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          Positioned(
-            right: 16,
-            top: 690,
-            child: Container(
-              width: 173,
-              decoration:kLineStyle,
-            ),
-          ),
-          Positioned(
-              top: 710,
-            left: 124,
-            child: WelcomeText(text: 'Log in with Your Face ID', fontSize: 18)
 
-          ),
-          Positioned(
-            left: 192,
-            bottom: 65,
-            child: Image(
-              image: AssetImage('images/faceid.png'),
-            ),
-
-          ),
         ],
       ),
     );
   }
 }
-
-
-
-
