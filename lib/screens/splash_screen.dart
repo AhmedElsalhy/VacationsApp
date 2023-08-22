@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vacations_app/components/system_colors.dart';
 import 'login_screen.dart';
-import 'package:vacations_app/constants.dart';
+import 'package:vacations_app/components/constants.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -17,9 +18,9 @@ class _SplashScreenState extends State<SplashScreen>
     SystemChrome.setEnabledSystemUIMode(
         SystemUiMode.immersive
     );
-    Future.delayed(Duration(seconds: 2),(){
+    Future.delayed(const Duration(seconds: 2),(){
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_)=>LoginScreen(),
+        builder: (_)=>const LoginScreen(),
       ));
     });
   }
@@ -38,11 +39,11 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
                 colors: [
-                  Color(0xFF013168),
-                  Color(0xFF024594)],
+                  beginLinearGradient,
+                  endLinearGradient],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter)),
         child:Stack(
@@ -51,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen>
               child: Container(
               width: 226,
               height: 74,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   centerSlice:Rect.zero,
                   image: AssetImage(
@@ -61,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
           ),
             ),
-        Positioned(
+        const Positioned(
           left: 97,
           bottom: 28,
           child: kCopyRightStyle,

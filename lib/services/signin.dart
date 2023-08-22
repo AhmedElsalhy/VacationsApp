@@ -1,5 +1,5 @@
 import 'package:vacations_app/helper/api.dart';
-import 'package:vacations_app/model.dart';
+import '../helper/model.dart';
 
 class SignIn {
   Future<Model> signin(

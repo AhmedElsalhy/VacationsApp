@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vacations_app/components/system_colors.dart';
 const kCopyRightStyle = Text(
   'Copyright - Ejada Systems Ltd. 1444 AH - 2023\n Version 1.0.0',
   textAlign: TextAlign.center,
   style:TextStyle(
-  color: Color(0xFFFAFAFA),
+  color: welcomeTextColor,
   fontSize: 12,
   fontFamily: 'Bahij TheSansArabic',
   fontWeight: FontWeight.w500,
@@ -13,7 +14,7 @@ const kCopyRightStyle = Text(
 );
 
 const kTextFieldStyle = TextStyle(
-    color: Color(0xFFFAFAFA),
+    color: welcomeTextColor,
     fontSize: 12,
     fontFamily: 'Bahij TheSansArabic',
     fontWeight: FontWeight.w500,
