@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:vacations_app/services/signin.dart';
+import '../components/system_colors.dart';
 import '../widgets/welcome_text.dart';
-import 'package:vacations_app/constants.dart';
+import 'package:vacations_app/components/constants.dart';
 import 'package:vacations_app/widgets/main_button.dart';
 import 'package:vacations_app/widgets/text_field.dart';
+import 'package:vacations_app/components/bottom_line.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,61 +20,62 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF013168),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          SizedBox(
-            height: 98,
-          ),
-          Center(
-            child: Container(
-              width: 226,
-              height: 74,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/image.png'),
-                  fit: BoxFit.fill,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: beginLinearGradient,
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const SizedBox(
+              height: 98.0,
+            ),
+            Center(
+              child: Container(
+                width: 226,
+                height: 74,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/image.png'),
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 46,
-          ),
-          Expanded(
-            child: Container(
-              decoration: ShapeDecoration(
-                color: Color(0xFF3A6496),
+            const SizedBox(
+              height: 46,
+            ),
+            Container(
+              decoration: const ShapeDecoration(
+                color: rectangleBackgroundColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(40.0),
                       topLeft: Radius.circular(40.0)),
                 ),
               ),
-              child: Stack(
+              child:Stack(
                 children: [
                   Column(
                     children: <Widget>[
-                      SizedBox(height: 50),
-                      Center(
+                      const SizedBox(height: 50),
+                      const Center(
                         child: WelcomeText(
                           text: 'Welcome !',
                           fontSize: 32,
                         ),
                       ),
-                      WelcomeText(
+                      const WelcomeText(
                         text: 'Log in to the Employees’ Vacations System',
                         fontSize: 17,
                       ),
-                      SizedBox(height: 30),
-                      Padding(
+                      const SizedBox(height: 30),
+                      const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: TextFieldStyle(
                             text: 'Username', obscureText: false),
                       ),
-                      SizedBox(height: 30),
-                      Padding(
+                      const SizedBox(height: 30),
+                      const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: TextFieldStyle(
                           text: 'Password',
@@ -80,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           Checkbox(
-                            side: BorderSide(width: 2, color: Colors.white),
+                            side: const BorderSide(width: 2, color: Colors.white),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(4)),
                             value: _isChecked,
@@ -90,38 +95,63 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             },
                           ),
-                          Text(
+                          const Text(
                             'Remember Me',
                             style: kTextFieldStyle,
                           ),
                         ],
                       ),
-                      SizedBox(height: 30),
-                      MainButtonStyle(
+                      const SizedBox(height: 25),
+                       MainButtonStyle(
                         text: 'Log In',
+                         onPressed: (){
+                          SignIn().signin(username: "aelmohsen", password: "2531");
+                         },
                       ),
-                      SizedBox(height: 25),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Expanded(
-                          child: Container(
-                            decoration: kLineStyle,
+                      const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            children: [
+                              const LineStyle(),
+                              Container(
+                                width: 24,
+                                height: 24,
+                                decoration: const ShapeDecoration(
+                                  shape: OvalBorder(
+                                    side: BorderSide(
+                                      width: 0.50,
+                                      strokeAlign: BorderSide.strokeAlignCenter,
+                                      color: welcomeTextColor
+                                    ),
+                                  ),
+                                ),
+                                child: const Padding(
+                                  padding:  EdgeInsets.symmetric(horizontal: 4,vertical: 5),
+                                  child: Text(
+                                      'OR',
+                                      textAlign: TextAlign.center,
+                                      style: kTextFieldStyle
+                                  ),
+                                ),
+                              ),
+                              const LineStyle(),
+                            ],
                           ),
                         ),
-                      ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      WelcomeText(
+                      const WelcomeText(
                           text: 'Log in with Your Face ID', fontSize: 18),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
-                      Image(
+                      const Image(
                         image: AssetImage('images/faceid.png'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 28),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 28),
                         child: kCopyRightStyle,
                       ),
                     ],
@@ -129,9 +159,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-          ),
-        ],
+            Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+          ],
+        ),
       ),
     );
   }
 }
+
