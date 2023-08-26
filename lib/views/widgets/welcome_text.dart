@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vacations_app/components/system_colors.dart';
+import 'package:vacations_app/views/components/system_colors.dart';
+
 class WelcomeText extends StatelessWidget {
-  const WelcomeText({super.key,  @required this.text, this.fontSize});
+  const WelcomeText({super.key, @required this.text, this.fontSize});
   final String? text;
   final double? fontSize;
   @override
@@ -10,11 +11,10 @@ class WelcomeText extends StatelessWidget {
       text!,
       textAlign: TextAlign.center,
       style: TextStyle(
-          color:welcomeTextColor,
+          color: welcomeTextColor,
           fontSize: fontSize,
           fontFamily: 'Bahij TheSansArabic',
-          fontWeight: FontWeight.w500
-      ),
+          fontWeight: FontWeight.w500),
     );
   }
 }
