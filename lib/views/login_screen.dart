@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vacations_app/services/signin.dart';
-import '../components/system_colors.dart';
-import '../widgets/welcome_text.dart';
-import 'package:vacations_app/components/constants.dart';
-import 'package:vacations_app/widgets/main_button.dart';
-import 'package:vacations_app/widgets/text_field.dart';
-import 'package:vacations_app/components/bottom_line.dart';
-
+import 'package:provider/provider.dart';
+import 'package:vacations_app/view_models/list_of_service_view_model.dart';
+import 'package:vacations_app/views/components/bottom_line.dart';
+import 'package:vacations_app/views/components/system_colors.dart';
+import 'package:vacations_app/views/widgets/copy_right.dart';
+import 'package:vacations_app/views/widgets/main_button.dart';
+import 'package:vacations_app/constants.dart';
+import 'package:vacations_app/views/widgets/text_field.dart';
+import 'package:vacations_app/views/widgets/welcome_text.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +17,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isChecked = false;
+  String? username;
+  String? password;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         reverse: true,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const SizedBox(
               height: 98.0,
@@ -53,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       topLeft: Radius.circular(40.0)),
                 ),
               ),
-              child:Stack(
+              child: Stack(
                 children: [
                   Column(
                     children: <Widget>[
@@ -69,15 +71,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 17,
                       ),
                       const SizedBox(height: 30),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: TextFieldStyle(
-                            text: 'Username', obscureText: false),
+                          onChanged: (value) {
+                            username = value;
+                          },
+                          text: 'Username',
+                          obscureText: false,
+                        ),
                       ),
                       const SizedBox(height: 30),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: TextFieldStyle(
+                          onChanged: (value) {
+                            password = value;
+                          },
                           text: 'Password',
                           obscureText: true,
                         ),
@@ -85,7 +95,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           Checkbox(
-                            side: const BorderSide(width: 2, color: Colors.white),
+                            side:
+                                const BorderSide(width: 2, color: Colors.white),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(4)),
                             value: _isChecked,
@@ -102,43 +113,43 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       const SizedBox(height: 25),
-                       MainButtonStyle(
+                      MainButtonStyle(
                         text: 'Log In',
-                         onPressed: (){
-                          SignIn().signin(username: "aelmohsen", password: "2531");
-                         },
+                        onPressed: () async {
+                          await Provider.of<ListOfServiceViewModel>(context,
+                                  listen: false)
+                              .signIn(username: username!, password: password!);
+                        },
                       ),
                       const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Row(
-                            children: [
-                              const LineStyle(),
-                              Container(
-                                width: 24,
-                                height: 24,
-                                decoration: const ShapeDecoration(
-                                  shape: OvalBorder(
-                                    side: BorderSide(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Row(
+                          children: [
+                            const LineStyle(),
+                            Container(
+                              width: 24,
+                              height: 24,
+                              decoration: const ShapeDecoration(
+                                shape: OvalBorder(
+                                  side: BorderSide(
                                       width: 0.50,
                                       strokeAlign: BorderSide.strokeAlignCenter,
-                                      color: welcomeTextColor
-                                    ),
-                                  ),
-                                ),
-                                child: const Padding(
-                                  padding:  EdgeInsets.symmetric(horizontal: 4,vertical: 5),
-                                  child: Text(
-                                      'OR',
-                                      textAlign: TextAlign.center,
-                                      style: kTextFieldStyle
-                                  ),
+                                      color: welcomeTextColor),
                                 ),
                               ),
-                              const LineStyle(),
-                            ],
-                          ),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 4, vertical: 5),
+                                child: Text('OR',
+                                    textAlign: TextAlign.center,
+                                    style: kTextFieldStyle),
+                              ),
+                            ),
+                            const LineStyle(),
+                          ],
                         ),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -152,18 +163,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 28),
-                        child: kCopyRightStyle,
+                        child: CopyRightStyle(),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+            Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+            )
           ],
         ),
       ),
     );
   }
 }
-

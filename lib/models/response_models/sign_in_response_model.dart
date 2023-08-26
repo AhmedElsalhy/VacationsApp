@@ -1,15 +1,15 @@
-class Model {
+class SignInResponseModel {
   String? code;
   String? messageType;
   String? errorMessageContent;
   String? jwtToken;
   String? type;
-  late int id = 0;
+  int? id;
   String? username;
   String? email;
-  List<dynamic>? roles = [];
+  List<dynamic>? roles;
 
-  Model(
+  SignInResponseModel(
       {this.code,
       this.messageType,
       this.errorMessageContent,
@@ -20,17 +20,7 @@ class Model {
       this.email,
       this.roles});
 
-  Model.initial()
-      : code = null,
-        messageType = 'Failure',
-        jwtToken = null,
-        type = null,
-        id = 0,
-        username = null,
-        email = null,
-        roles = [];
-
-  Model.fromJson(Map<String, dynamic> jsonData) {
+  SignInResponseModel.fromJson(Map<String, dynamic> jsonData) {
     code = jsonData['code'];
     messageType = jsonData['messageType'];
     errorMessageContent = jsonData['errorMessageContent'];
