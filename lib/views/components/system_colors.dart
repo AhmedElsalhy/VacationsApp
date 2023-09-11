@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
-const beginLinearGradient = Color(0xFF013168);
-const endLinearGradient = Color(0xFF024594);
+const beginBackGroundLinearGradient = Color(0xFF013068);
+const endBackGroundLinearGradient = Color(0xFF024594);
 const rectangleBackgroundColor = Color(0xFF3A6496);
 const mainButtonColor = Color(0xFF00C7B4);
+const endFortyPercentColor = Color(0xFF30FFEB);
+const beginTenPercentColor = Color(0xFFFFC043);
+const endTenPercentColor = Color(0xFFF6ECD9);
 const welcomeTextColor = Color(0xFFFAFAFA);
+const dashBoardTotalIconColor = Color(0xFFF2F2F7);
+const boxShadowColor = Color(0x1E000000);
+const vacationTypesTextColor = Color(0xFF242426);
+const homePageTextColor = Color(0xFF3A3A3C);
+const firstCalendarIconColor = Color(0xFF0C57A8);
+const firstBackgroundVacationsTypesColor = Color(0xFFE4EEF5);
+const secondCalendarIconColor = Color(0xFFFFC043);
+const secondBackgroundVacationsTypesColor = Color(0xFFF6ECD9);
+const thirdCalendarIconColor = Color(0xFF00C7B4);
+const thirdBackGroundVacationsTypesColor = Color(0xFFDFF1EF);
+const fourthCalendarIconColor = Color(0xFFF88A81);
+const fourthBackGroundVacationsTypesColor = Color(0xFFFEE7E6);
+const navigationIconColor = Color(0xFFAEAEB2);
+const profileTextColor = Color(0xFF114374);

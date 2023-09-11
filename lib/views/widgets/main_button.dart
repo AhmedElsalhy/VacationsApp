@@ -14,7 +14,6 @@ class MainButtonStyle extends StatelessWidget {
         color: mainButtonColor,
         borderRadius: BorderRadius.circular(10),
         child: MaterialButton(
-          minWidth: 398,
           height: 58.0,
           onPressed: onPressed,
           child: Row(
@@ -31,7 +30,7 @@ class MainButtonStyle extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 240,
+                width: 220,
               ),
               const Expanded(
                 child: Icon(
