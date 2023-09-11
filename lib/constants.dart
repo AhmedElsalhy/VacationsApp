@@ -16,3 +16,11 @@ const kLineStyle = ShapeDecoration(
         color: Colors.white),
   ),
 );
+
+const kDividerLine =  Divider(
+  height: 35,
+  color: Colors.black,
+  thickness: 0.2,
+);
+
+

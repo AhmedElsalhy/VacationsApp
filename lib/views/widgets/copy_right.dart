@@ -6,7 +6,7 @@ class CopyRightStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
+    return  const Text(
       'Copyright - Ejada Systems Ltd. 1444 AH - 2023\n Version 1.0.0',
       textAlign: TextAlign.center,
       style: TextStyle(

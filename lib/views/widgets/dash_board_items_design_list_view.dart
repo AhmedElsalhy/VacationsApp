@@ -9,7 +9,10 @@ class DashboardItemDesign extends StatelessWidget {
       required this.vacationTypeText,
       required this.progressText,
       required this.progressColor,
-      required this.colorForIconUsedDay, required this.totalDaysText, required this.circularPercent, required this.usedDaysText});
+      required this.colorForIconUsedDay,
+      required this.totalDaysText,
+      required this.circularPercent,
+      required this.usedDaysText});
   final String vacationTypeText;
   final String totalDaysText;
   final String usedDaysText;
@@ -43,9 +46,12 @@ class DashboardItemDesign extends StatelessWidget {
         children: [
           HomePageTextStyle(
             text: vacationTypeText,
-            fontSize: 15, color: const Color(0xFF3A3A3C),
+            fontSize: 15,
+            color: const Color(0xFF3A3A3C),
           ),
-          const SizedBox(height: 13,),
+          const SizedBox(
+            height: 13,
+          ),
           Center(
             child: CircularPercentIndicator(
                 animation: true,
@@ -55,16 +61,22 @@ class DashboardItemDesign extends StatelessWidget {
                 progressColor: progressColor,
                 backgroundColor: dashBoardTotalIconColor,
                 circularStrokeCap: CircularStrokeCap.round,
-                center: HomePageTextStyle(text: progressText, fontSize: 22, color: homePageTextColor,)),
+                center: HomePageTextStyle(
+                  text: progressText,
+                  fontSize: 22,
+                  color: homePageTextColor,
+                )),
           ),
-          const SizedBox(height: 13,),
+          const SizedBox(
+            height: 13,
+          ),
           Row(
             children: [
               Container(
                 width: 12,
                 height: 12,
                 decoration: ShapeDecoration(
-                  color:dashBoardTotalIconColor,
+                  color: dashBoardTotalIconColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -73,7 +85,11 @@ class DashboardItemDesign extends StatelessWidget {
               const SizedBox(
                 width: 4,
               ),
-               HomePageTextStyle(text:totalDaysText, fontSize: 12, color: homePageTextColor,),
+              HomePageTextStyle(
+                text: totalDaysText,
+                fontSize: 12,
+                color: homePageTextColor,
+              ),
               const SizedBox(
                 width: 8,
               ),
@@ -93,7 +109,11 @@ class DashboardItemDesign extends StatelessWidget {
               const SizedBox(
                 width: 4,
               ),
-               HomePageTextStyle(text:usedDaysText, fontSize: 12, color: homePageTextColor,)
+              HomePageTextStyle(
+                text: usedDaysText,
+                fontSize: 12,
+                color: homePageTextColor,
+              )
             ],
           ),
         ],
