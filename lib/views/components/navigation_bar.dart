@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:vacations_app/views/components/system_colors.dart';
 import 'package:vacations_app/views/screens/home_page_screen/home_page_screen.dart';
+import 'package:vacations_app/views/screens/official_leaves_screen/official_leaves_screen.dart';
+import 'package:vacations_app/views/screens/request_a_vacation_screen/request_a_vacation_screen.dart';
 import 'package:vacations_app/views/screens/vacation_history_screen/vacation_history_screen.dart';
-import 'package:vacations_app/views/widgets/floating_action_button.dart';
+import 'package:vacations_app/views/components/floating_action_button.dart';
 
 class MyNavigationBar extends StatefulWidget {
   const MyNavigationBar({Key? key}) : super(key: key);
@@ -16,6 +18,8 @@ class MyNavigationBarState extends State<MyNavigationBar> {
   static List<Widget> screens = <Widget>[
     const HomePage(),
     const VacationHistory(),
+    const RequestAVacation(),
+    const OfficialLeaves(),
   ];
 
   @override
@@ -44,19 +48,19 @@ class MyNavigationBarState extends State<MyNavigationBar> {
         },
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            icon: ImageIcon(AssetImage('images/homepageIcon.png')),
             label: 'Home Page',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
+            icon: ImageIcon(AssetImage('images/vacationHistoryIcon.png')),
             label: 'Vacations History',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_business),
+            icon: ImageIcon(AssetImage('images/requestIcon.png')),
             label: 'Request a Vacation',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.medical_information),
+            icon: ImageIcon(AssetImage('images/officialIcon.png')),
             label: 'Official Leaves',
           ),
         ],

@@ -14,45 +14,44 @@ class VacationItemsDesign extends StatelessWidget {
     this.secondNumberText,
     this.secondText,
     this.bottomText,
-    this.bottomTextFontSize,
-    this.bottomTextColor,
   }) : super(key: key);
 
   final Color calendarIconColor;
-  final String typeVacation;
+  final String? typeVacation;
   final String? secondNumberText;
   final String? secondText;
   final String numbOfVacationText;
   final String textDays;
   final Color backgroundItemColor;
   final String? bottomText;
-  final double? bottomTextFontSize;
-  final Color? bottomTextColor;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        minWidth: 207,
-      ),
-      decoration: ShapeDecoration(
-        color: backgroundItemColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: Container(
+        constraints: const BoxConstraints(
+          minWidth: 207,
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildCalendarIcon(),
-            const SizedBox(height: 20),
-            _buildTypeVacationText(),
-            const SizedBox(height: 8),
-            _buildVacationInfo(),
-            _buildBottomText(),
-          ],
+        decoration: ShapeDecoration(
+          color: backgroundItemColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 16, top: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildCalendarIcon(),
+              const SizedBox(height: 20),
+              _buildTypeVacationText(),
+              const SizedBox(height: 8),
+              _buildVacationInfo(),
+              _buildBottomText(),
+            ],
+          ),
         ),
       ),
     );
@@ -97,8 +96,8 @@ class VacationItemsDesign extends StatelessWidget {
   Widget _buildBottomText() {
     return HomePageTextStyle(
       text: bottomText,
-      color: bottomTextColor,
-      fontSize: bottomTextFontSize,
+      color: homePageTextColor,
+      fontSize: 12,
     );
   }
 }

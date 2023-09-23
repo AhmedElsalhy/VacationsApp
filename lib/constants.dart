@@ -17,10 +17,25 @@ const kLineStyle = ShapeDecoration(
   ),
 );
 
-const kDividerLine =  Divider(
+const kDividerLine = Divider(
   height: 35,
   color: Colors.black,
   thickness: 0.2,
 );
 
-
+const kFirstTextFieldSpanStyle = TextStyle(
+  color: Color(0xFFAEAEB2),
+  fontSize: 15,
+  fontFamily: 'Bahij TheSansArabic',
+  fontWeight: FontWeight.w500,
+  height: 0.09,
+  letterSpacing: -0.24,
+);
+const kSecTextFieldSpanStyle = TextStyle(
+  color: notificationColor,
+  fontSize: 15,
+  fontFamily: 'Bahij TheSansArabic',
+  fontWeight: FontWeight.w500,
+  height: 0.09,
+  letterSpacing: -0.24,
+);

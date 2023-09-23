@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vacations_app/base/base_view/base_view.dart';
+import 'package:vacations_app/services/get_unread_tasks_or_notifications_count_service/get_unread_tasks_or_notifications_count_service.dart';
+import 'package:vacations_app/view_models/get_unread_tasks_or_notifications_count_view_model.dart';
 import 'package:vacations_app/views/components/system_colors.dart';
 import 'package:vacations_app/views/components/top_curve_painter.dart';
+import 'package:vacations_app/views/screens/notifications_screen/notifications_screen.dart';
 import 'package:vacations_app/views/screens/profile_screen/profile_screen.dart';
 import 'package:vacations_app/views/widgets/icon_design.dart';
 import 'package:vacations_app/views/widgets/text_style_of_pages.dart';
@@ -10,10 +14,23 @@ class TopScreenCurveWithIcons extends StatelessWidget {
     super.key,
     required this.mainDetailOfScreen,
   });
+
   final String mainDetailOfScreen;
 
   @override
   Widget build(BuildContext context) {
+    return BaseView<GetUnreadTasksOrNotificationsCountViewModel>(
+      vmBuilder: (context) => GetUnreadTasksOrNotificationsCountViewModel(
+        service: GetUnreadTasksOrNotificationsCountService(),
+      ),
+      builder: _buildScreen,
+    );
+  }
+
+  final int activeIndex = 0;
+
+  Widget _buildScreen(
+      context, GetUnreadTasksOrNotificationsCountViewModel viewModel) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.37,
       child: ClipPath(
@@ -50,15 +67,22 @@ class TopScreenCurveWithIcons extends StatelessWidget {
                 children: [
                   Badge(
                     textColor: Colors.white,
-                    backgroundColor: Colors.red.shade300,
+                    backgroundColor: notificationColor,
                     largeSize: 19,
                     alignment: const Alignment(1, -0.5),
-                    label: const Text(
-                      '12',
+                    label: Text(
+                      viewModel.unreadCount.toString(),
                     ),
                     offset: const Offset(-7, 0),
                     child: IconDesign(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NotificationsScreen(),
+                          ),
+                        );
+                      },
                       icon: const Icon(Icons.notifications),
                     ),
                   ),
@@ -107,6 +131,7 @@ class TopScreenCurveWithBackButton extends StatelessWidget {
     super.key,
     required this.mainDetailOfScreen,
   });
+
   final String mainDetailOfScreen;
 
   @override
@@ -155,7 +180,7 @@ class TopScreenCurveWithBackButton extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.arrow_back_ios_new_rounded,
-                            size: 17,
+                            size: 25,
                             color: Colors.white,
                           ),
                           Padding(

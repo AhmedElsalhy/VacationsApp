@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:vacations_app/views/components/system_colors.dart';
+import 'package:vacations_app/views/widgets/text_style_of_pages.dart';
 
 class MainButtonStyle extends StatelessWidget {
   const MainButtonStyle({super.key, this.text, required this.onPressed});
+
   final String? text;
-  final Function()? onPressed;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,33 @@ class MainButtonStyle extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ButtonAppStyle extends StatelessWidget {
+  const ButtonAppStyle({
+    super.key,
+    required this.textOfButton,
+    required this.onPressed,
+  });
+
+  final String textOfButton;
+  final Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: endBackGroundLinearGradient,
+      borderRadius: BorderRadius.circular(8),
+      child: MaterialButton(
+        elevation: 0,
+        height: 44,
+        minWidth: double.infinity,
+        onPressed: onPressed,
+        child: HomePageTextStyle(
+            text: textOfButton, fontSize: 16, color: Colors.white),
       ),
     );
   }

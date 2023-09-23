@@ -6,8 +6,10 @@ class MyVacationsDatesDetails extends StatelessWidget {
   const MyVacationsDatesDetails({
     super.key,
     required this.requestOrStartDate,
-    required this.periodOrEndDate, required this.distanceWidth,
+    required this.distanceWidth,
+    required this.periodOrEndDate,
   });
+
   final String requestOrStartDate;
   final String periodOrEndDate;
   final double distanceWidth;
@@ -21,7 +23,9 @@ class MyVacationsDatesDetails extends StatelessWidget {
           color: firstCalendarIconColor,
           fontSize: 12,
         ),
-SizedBox(width: distanceWidth,),
+        SizedBox(
+          width: distanceWidth,
+        ),
         HomePageTextStyle(
           text: periodOrEndDate,
           color: firstCalendarIconColor,

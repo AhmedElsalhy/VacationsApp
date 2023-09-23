@@ -14,6 +14,7 @@ class OurFeaturesDetails extends StatelessWidget {
     required this.moreDetailsAboutFeature,
     required this.smallCirclePosition,
   });
+
   final String featureIcon;
   final String featureName;
   final String detailsAboutFeature;

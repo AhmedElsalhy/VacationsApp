@@ -3,7 +3,7 @@ import 'package:vacations_app/constants.dart';
 import 'package:vacations_app/views/components/system_colors.dart';
 import 'package:vacations_app/views/widgets/profile_details.dart';
 import 'package:vacations_app/views/widgets/text_style_of_pages.dart';
-import 'package:vacations_app/views/widgets/top_screen_details.dart';
+import 'package:vacations_app/views/components/top_screen_details.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

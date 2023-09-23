@@ -22,3 +22,7 @@ const fourthCalendarIconColor = Color(0xFFF88A81);
 const fourthBackGroundVacationsTypesColor = Color(0xFFFEE7E6);
 const navigationIconColor = Color(0xFFAEAEB2);
 const profileTextColor = Color(0xFF114374);
+const notificationColor = Color(0xFFF77268);
+const filterBackgroundColor = Color(0xCDF9F9FB);
+const lightTextColor = Color(0xFF444446);
+const borderTextFieldColor = Color(0x4D548BC2);
