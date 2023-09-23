@@ -18,6 +18,7 @@ class MyVacationsItems extends StatelessWidget {
     required this.endDate,
     required this.sizedBoxWidth,
   });
+
   final String myVacationTypeText;
   final String responseMessageText;
   final Color backGroundResponseMessageColor;
@@ -34,7 +35,7 @@ class MyVacationsItems extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 16, left: 16),
       width: 300,
-      height: double.infinity,
+      height: 210,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -44,8 +45,6 @@ class MyVacationsItems extends StatelessWidget {
           BoxShadow(
             color: boxShadowColor,
             blurRadius: 22,
-            offset: Offset(0, 0),
-            spreadRadius: 0,
           ),
         ],
       ),
