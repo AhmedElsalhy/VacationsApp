@@ -9,7 +9,7 @@ import 'package:vacations_app/views/screens/profile_screen/profile_screen.dart';
 import 'package:vacations_app/views/widgets/icon_design.dart';
 import 'package:vacations_app/views/widgets/text_style_of_pages.dart';
 
-class TopScreenCurveWithIcons extends StatelessWidget {
+class TopScreenCurveWithIcons extends StatefulWidget {
   const TopScreenCurveWithIcons({
     super.key,
     required this.mainDetailOfScreen,
@@ -18,13 +18,31 @@ class TopScreenCurveWithIcons extends StatelessWidget {
   final String mainDetailOfScreen;
 
   @override
+  State<TopScreenCurveWithIcons> createState() =>
+      _TopScreenCurveWithIconsState();
+}
+
+class _TopScreenCurveWithIconsState extends State<TopScreenCurveWithIcons> {
+  GetUnreadTasksOrNotificationsCountViewModel?
+      getUnreadTasksOrNotificationsCountViewModel;
+
+  @override
   Widget build(BuildContext context) {
     return BaseView<GetUnreadTasksOrNotificationsCountViewModel>(
-      vmBuilder: (context) => GetUnreadTasksOrNotificationsCountViewModel(
-        service: GetUnreadTasksOrNotificationsCountService(),
-      ),
+      vmBuilder: (context) => getUnreadTasksOrNotificationsCountViewModel!,
       builder: _buildScreen,
     );
+  }
+
+  @override
+  void initState() {
+    getUnreadTasksOrNotificationsCountViewModel =
+        GetUnreadTasksOrNotificationsCountViewModel(
+      service: GetUnreadTasksOrNotificationsCountService(),
+    );
+    getUnreadTasksOrNotificationsCountViewModel
+        ?.getUnreadTasksOrNotificationsCount();
+    super.initState();
   }
 
   final int activeIndex = 0;
@@ -110,7 +128,7 @@ class TopScreenCurveWithIcons extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13),
                 child: LogInTextStyle(
-                  text: mainDetailOfScreen,
+                  text: widget.mainDetailOfScreen,
                   fontSize: 28,
                 ),
               ),

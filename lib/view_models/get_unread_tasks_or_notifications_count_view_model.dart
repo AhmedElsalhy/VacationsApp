@@ -9,11 +9,12 @@ class GetUnreadTasksOrNotificationsCountViewModel extends BaseViewModel {
 
   int unreadCount = 0;
 
-  Future<void> getUnreadTasksOrNotificationsCount() async {
+  Future<int> getUnreadTasksOrNotificationsCount() async {
     try {
-      var response = await service?.getUnreadTasksOrNotificationsCount();
-      unreadCount = response!.count;
+      var response = await service!.getUnreadTasksOrNotificationsCount();
+      unreadCount = response.count;
       notifyListeners();
+      return unreadCount;
     } catch (error) {
       throw Exception(error);
     }
