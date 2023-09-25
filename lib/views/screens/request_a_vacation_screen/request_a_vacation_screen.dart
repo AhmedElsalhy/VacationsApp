@@ -47,16 +47,16 @@ class RequestAVacation extends StatelessWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  const TextFieldWithSpanStyleAndIcons(
-                    firstTextSpan: 'Start Date',
-                    imageIconItem: CalendarIconWithCircleBackground(),
+                  const FilterTextFieldItem(
+                    labelText: 'Start Date',
+                    secondLabelText: '*',
                   ),
                   const SizedBox(
                     height: 24,
                   ),
-                  const TextFieldWithSpanStyleAndIcons(
-                    firstTextSpan: 'End Date',
-                    imageIconItem: CalendarIconWithCircleBackground(),
+                  const FilterTextFieldItem(
+                    labelText: 'End Date',
+                    secondLabelText: '*',
                   ),
                   const SizedBox(
                     height: 24,

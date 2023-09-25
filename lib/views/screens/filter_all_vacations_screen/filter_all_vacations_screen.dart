@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:vacations_app/base/base_view/base_view.dart';
+import 'package:vacations_app/base/base_view_models/base_view_model.dart';
 import 'package:vacations_app/views/components/system_colors.dart';
 import 'package:vacations_app/views/components/Buttons_app_style.dart';
 import 'package:vacations_app/views/widgets/filter_text_field_item.dart';
 import 'package:vacations_app/views/widgets/text_style_of_pages.dart';
 
 class FilterAllVacations extends StatelessWidget {
-  const FilterAllVacations({super.key});
+  FilterAllVacations({super.key});
+
+  final DropdownFormFieldUtils dropdownFormFieldUtils =
+      DropdownFormFieldUtils();
 
   @override
   Widget build(BuildContext context) {
+    return BaseView(
+      vmBuilder: (context) => BaseViewModel(),
+      builder: _buildScreen,
+    );
+  }
+
+  Widget _buildScreen(context, BaseViewModel viewModel) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -74,10 +86,17 @@ class FilterAllVacations extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                FilterTextFieldItem(
-                  labelText: 'Choose an Option',
-                  onPressed: () {},
-                  imageIconItem: const TextFieldIcon(),
+                SizedBox(
+                  height: 50,
+                  width: 181,
+                  child: dropdownFormFieldUtils.buildDropdownButtonFormField(
+                    value: viewModel.selectedCountry,
+                    options: viewModel.countryOptions,
+                    labelText: 'Choose an Option',
+                    onChanged: (newValue) {
+                      viewModel.selectedCountry = newValue;
+                    },
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
@@ -90,20 +109,20 @@ class FilterAllVacations extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                Row(
+                const Row(
                   children: [
-                    FilterTextFieldItem(
-                      imageIconItem: const CalendarIconWithCircleBackground(),
-                      labelText: 'From',
-                      onPressed: () {},
+                    Expanded(
+                      child: FilterTextFieldItem(
+                        labelText: 'From',
+                      ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 16,
                     ),
-                    FilterTextFieldItem(
-                      imageIconItem: const CalendarIconWithCircleBackground(),
-                      labelText: 'To',
-                      onPressed: () {},
+                    Expanded(
+                      child: FilterTextFieldItem(
+                        labelText: 'To',
+                      ),
                     ),
                   ],
                 ),

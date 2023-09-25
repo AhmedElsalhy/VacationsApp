@@ -8,12 +8,31 @@ class BaseViewModel extends ChangeNotifier {
   bool isChecked = false;
   final bool _isInitializeDone = false;
   final FocusNode backFocusNode = FocusNode();
+  String? selectedVacationType;
+  String? selectedRequestState;
+  String? selectedCountry;
 
   @override
   void dispose() {
     backFocusNode.dispose();
+    _pageController.dispose();
     super.dispose();
   }
+
+  final List<String> countryOptions = [
+    'Egypt',
+  ];
+  final List<String> vacationsOptions = [
+    'Sick Vac ',
+    'Regular Vac',
+    'Compulsory Vac',
+    'Birth Vac'
+  ];
+  final List<String> listOfRequestState = [
+    'Accepted',
+    'Under Approval',
+    'Rejected',
+  ];
 
   get pageController => _pageController;
 
