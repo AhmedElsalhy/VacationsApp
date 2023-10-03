@@ -1,15 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:vacations_app/base/base_view/base_view.dart';
 import 'package:vacations_app/constants.dart';
+import 'package:vacations_app/models/get_employee_by_id_response_model.dart';
+import 'package:vacations_app/services/get_employee_by_id_service/get_employee_by_id_service.dart';
+import 'package:vacations_app/view_models/get_employee_by_id_view_model.dart';
 import 'package:vacations_app/views/components/system_colors.dart';
 import 'package:vacations_app/views/widgets/profile_details.dart';
 import 'package:vacations_app/views/widgets/text_style_of_pages.dart';
 import 'package:vacations_app/views/components/top_screen_details.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  GetEmployeeByIdViewModel? getEmployeeByIdViewModel;
+
+  @override
   Widget build(BuildContext context) {
+    return BaseView<GetEmployeeByIdViewModel>(
+      vmBuilder: (context) => getEmployeeByIdViewModel!,
+      builder: _buildScreen,
+    );
+  }
+
+  @override
+  void initState() {
+    getEmployeeByIdViewModel = GetEmployeeByIdViewModel(
+      service: GetEmployeeByIdService(),
+    );
+    getEmployeeByIdViewModel?.getEmployeeById();
+    super.initState();
+  }
+
+  Widget _buildScreen(context, GetEmployeeByIdViewModel viewModel) {
+    EmployeeData? employeeData = viewModel.responseEmployeeData;
     return Scaffold(
       backgroundColor: welcomeTextColor,
       body: Stack(
@@ -37,21 +65,21 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 70),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 70),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 26),
+                    padding: const EdgeInsets.symmetric(horizontal: 26),
                     child: Column(
                       children: [
                         HomePageTextStyle(
-                            text: 'Ali Abo Elmohsen Adel',
+                            text: employeeData?.name ?? '',
                             fontSize: 17,
                             color: vacationTypesTextColor),
                         HomePageTextStyle(
-                            text: 'PRODUCT MANAGEMENT',
+                            text: employeeData?.departmentName ?? '',
                             fontSize: 14,
                             color: firstCalendarIconColor),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: 24),
                           child: MainProfileDetails(
                             emailBirthGenderRecruitmentData: 'Email',
@@ -61,40 +89,46 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         SubProfileDetails(
                           dataOfEmailBirthGenderRecruitment:
-                              'aelmohsen@ejada.com',
-                          dataOfMobileBirthPlaceJoin: '00966552673039',
+                              employeeData?.email ?? '',
+                          dataOfMobileBirthPlaceJoin:
+                              employeeData?.mobileNumber ?? '',
                           widthValue: 70,
                         ),
                         kDividerLine,
-                        MainProfileDetails(
+                        const MainProfileDetails(
                           emailBirthGenderRecruitmentData: 'Birthdate',
                           mobileBirthPlaceJoinData: 'Birth Place',
                           widthValue: 160,
                         ),
                         SubProfileDetails(
-                          dataOfEmailBirthGenderRecruitment: '23-5-1994',
-                          dataOfMobileBirthPlaceJoin: 'Cairo',
+                          dataOfEmailBirthGenderRecruitment:
+                              employeeData?.birthDateString.split('T')[0] ?? '',
+                          dataOfMobileBirthPlaceJoin:
+                              employeeData?.birthPlace ?? '',
                           widthValue: 160,
                         ),
                         kDividerLine,
-                        MainProfileDetails(
+                        const MainProfileDetails(
                           emailBirthGenderRecruitmentData: 'Gender',
                           mobileBirthPlaceJoinData: '',
                           widthValue: 0,
                         ),
                         SubProfileDetails(
-                            dataOfEmailBirthGenderRecruitment: 'Male',
+                            dataOfEmailBirthGenderRecruitment:
+                                employeeData?.gender == 0 ? 'Male' : 'Female',
                             dataOfMobileBirthPlaceJoin: '',
                             widthValue: 0),
                         kDividerLine,
-                        MainProfileDetails(
+                        const MainProfileDetails(
                           emailBirthGenderRecruitmentData: 'Recruitment Date',
                           mobileBirthPlaceJoinData: 'Join Date',
                           widthValue: 110,
                         ),
                         SubProfileDetails(
                             dataOfEmailBirthGenderRecruitment: '31-8-2021',
-                            dataOfMobileBirthPlaceJoin: '01-4-2018',
+                            dataOfMobileBirthPlaceJoin:
+                                employeeData?.joiningDateString.split('T')[0] ??
+                                    '',
                             widthValue: 160)
                       ],
                     ),
@@ -134,9 +168,11 @@ class ProfileScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              child: const Center(
+              child: Center(
                   child: HomePageTextStyle(
-                      text: 'E1234', fontSize: 17, color: Colors.white)),
+                      text: employeeData?.empNo ?? '',
+                      fontSize: 17,
+                      color: Colors.white)),
             ),
           ),
         ],

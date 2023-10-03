@@ -10,15 +10,11 @@ class GetEmpVacationTypesViewModel extends BaseViewModel {
 
   List<VacationType> vacationTypes = [];
 
-  Future<List<VacationType>> getEmpVacationType() async {
+  Future<void> getEmpVacationType() async {
     try {
-      var vacationItemDesign = await service!.getEmpVacationTypes();
-      for (var vacationType in vacationItemDesign.vacationType) {
-        vacationTypes.add(vacationType);
-      }
+      var responseData = await service?.getEmpVacationTypes();
+      vacationTypes = responseData?.vacationType ?? [];
       notifyListeners();
-
-      return vacationTypes;
     } catch (error) {
       debugPrint('Error occurred while fetching vacation types: $error');
       throw Exception(error);

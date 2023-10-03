@@ -6,11 +6,11 @@ class LogInService extends NetworkHelper {
     required String username,
     required String password,
   }) async {
-    Map<String, dynamic> data = await postRequest(
+    Map<String, dynamic> responseData = await postRequest(
       endPoint: '/auth/signin',
       body: {"username": username, "password": password},
     );
 
-    return SignInResponseModel.fromJson(data);
+    return SignInResponseModel.fromJson(responseData);
   }
 }

@@ -1,13 +1,13 @@
 class GetEmpVacationTypesResponseModel {
   final String code;
   final String messageType;
-  final String? errorMessageContent;
+  final String errorMessageContent;
   final List<VacationType> vacationType;
 
   GetEmpVacationTypesResponseModel({
     required this.code,
     required this.messageType,
-    this.errorMessageContent,
+    required this.errorMessageContent,
     required this.vacationType,
   });
 
@@ -25,7 +25,7 @@ class GetEmpVacationTypesResponseModel {
 
 class VacationType {
   final int? vacationCode;
-  final int? value;
+  final dynamic value;
   final int? usedValue;
   final String? description;
   final String? descriptionAr;

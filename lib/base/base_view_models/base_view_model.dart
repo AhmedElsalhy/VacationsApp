@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 class BaseViewModel extends ChangeNotifier {
   late PageController _pageController;
@@ -11,6 +12,8 @@ class BaseViewModel extends ChangeNotifier {
   String? selectedVacationType;
   String? selectedRequestState;
   String? selectedCountry;
+  DateFormat apiFormat = DateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+  DateFormat outputFormat = DateFormat("yyyy-MM-dd  hh:mm");
 
   @override
   void dispose() {
