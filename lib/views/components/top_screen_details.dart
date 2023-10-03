@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:vacations_app/base/base_view/base_view.dart';
 import 'package:vacations_app/services/get_unread_tasks_or_notifications_count_service/get_unread_tasks_or_notifications_count_service.dart';
 import 'package:vacations_app/view_models/get_unread_tasks_or_notifications_count_view_model.dart';
@@ -42,6 +43,7 @@ class _TopScreenCurveWithIconsState extends State<TopScreenCurveWithIcons> {
     );
     getUnreadTasksOrNotificationsCountViewModel
         ?.getUnreadTasksOrNotificationsCount();
+
     super.initState();
   }
 
@@ -49,6 +51,8 @@ class _TopScreenCurveWithIconsState extends State<TopScreenCurveWithIcons> {
 
   Widget _buildScreen(
       context, GetUnreadTasksOrNotificationsCountViewModel viewModel) {
+    final currentDate = DateTime.now();
+    final formattedDate = DateFormat('d MMMM, yyyy').format(currentDate);
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.37,
       child: ClipPath(
@@ -132,9 +136,9 @@ class _TopScreenCurveWithIconsState extends State<TopScreenCurveWithIcons> {
                   fontSize: 28,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 14.0),
-                child: LogInTextStyle(text: '7 February,2023 ', fontSize: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                child: LogInTextStyle(text: formattedDate, fontSize: 16),
               ),
             ],
           ),

@@ -18,7 +18,6 @@ class NotificationItem extends StatelessWidget {
     required this.backGroundResponseMessageColor,
     required this.responseMessageBorderColor,
     required this.responseMessageTextColor,
-    required this.sizedBoxWidth,
   });
 
   final String typeOfVacation;
@@ -30,7 +29,6 @@ class NotificationItem extends StatelessWidget {
   final Color backGroundResponseMessageColor;
   final Color responseMessageBorderColor;
   final Color responseMessageTextColor;
-  final double sizedBoxWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +87,6 @@ class NotificationItem extends StatelessWidget {
                       backGroundResponseMessageColor,
                   responseMessageBorderColor: responseMessageBorderColor,
                   responseMessageTextColor: responseMessageTextColor,
-                  sizedBoxWidth: sizedBoxWidth,
                 ),
                 const SizedBox(
                   height: 16,
@@ -105,13 +102,11 @@ class NotificationItem extends StatelessWidget {
                 const MyVacationsDetails(
                   requestOrStartDateText: 'Start Date',
                   periodOrEndDateText: 'End Date',
-                  distanceWidth: 150,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: MyVacationsDatesDetails(
                     requestOrStartDate: myStartDate,
-                    distanceWidth: 170,
                     periodOrEndDate: myEndDate,
                   ),
                 ),

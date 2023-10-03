@@ -8,11 +8,10 @@ class MyVacationsDetails extends StatelessWidget {
     super.key,
     required this.requestOrStartDateText,
     required this.periodOrEndDateText,
-    required this.distanceWidth,
   });
+
   final String requestOrStartDateText;
   final String periodOrEndDateText;
-  final double distanceWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +26,18 @@ class MyVacationsDetails extends StatelessWidget {
           fontSize: 14,
           color: vacationTypesTextColor,
         ),
-        SizedBox(
-          width: distanceWidth,
-        ),
+        const Spacer(),
         const HomePageSmallCircle(),
         const SizedBox(
           width: 4,
         ),
-        HomePageTextStyle(
-          text: periodOrEndDateText,
-          fontSize: 14,
-          color: vacationTypesTextColor,
+        Padding(
+          padding: const EdgeInsets.only(right: 56),
+          child: HomePageTextStyle(
+            text: periodOrEndDateText,
+            fontSize: 14,
+            color: vacationTypesTextColor,
+          ),
         )
       ],
     );

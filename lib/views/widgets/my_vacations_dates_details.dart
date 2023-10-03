@@ -6,32 +6,31 @@ class MyVacationsDatesDetails extends StatelessWidget {
   const MyVacationsDatesDetails({
     super.key,
     required this.requestOrStartDate,
-    required this.distanceWidth,
     required this.periodOrEndDate,
   });
 
   final String requestOrStartDate;
   final String periodOrEndDate;
-  final double distanceWidth;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        HomePageTextStyle(
-          text: requestOrStartDate,
-          color: firstCalendarIconColor,
-          fontSize: 12,
-        ),
-        SizedBox(
-          width: distanceWidth,
-        ),
-        HomePageTextStyle(
-          text: periodOrEndDate,
-          color: firstCalendarIconColor,
-          fontSize: 12,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(right: 55),
+      child: Row(
+        children: [
+          HomePageTextStyle(
+            text: requestOrStartDate,
+            color: firstCalendarIconColor,
+            fontSize: 12,
+          ),
+          const Spacer(),
+          HomePageTextStyle(
+            text: periodOrEndDate,
+            color: firstCalendarIconColor,
+            fontSize: 12,
+          ),
+        ],
+      ),
     );
   }
 }

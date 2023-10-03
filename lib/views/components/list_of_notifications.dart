@@ -13,7 +13,6 @@ const List<Widget> notificationsItem = [
     backGroundResponseMessageColor: thirdBackGroundVacationsTypesColor,
     responseMessageBorderColor: thirdCalendarIconColor,
     responseMessageTextColor: thirdCalendarIconColor,
-    sizedBoxWidth: 160,
   ),
   NotificationItem(
     typeOfVacation: 'Regular Vacation',
@@ -26,7 +25,6 @@ const List<Widget> notificationsItem = [
     backGroundResponseMessageColor: fourthBackGroundVacationsTypesColor,
     responseMessageBorderColor: fourthCalendarIconColor,
     responseMessageTextColor: fourthCalendarIconColor,
-    sizedBoxWidth: 135,
   ),
   NotificationItem(
     typeOfVacation: 'Sick Vacation',
@@ -38,6 +36,5 @@ const List<Widget> notificationsItem = [
     backGroundResponseMessageColor: thirdBackGroundVacationsTypesColor,
     responseMessageBorderColor: thirdCalendarIconColor,
     responseMessageTextColor: thirdCalendarIconColor,
-    sizedBoxWidth: 160,
   ),
 ];
